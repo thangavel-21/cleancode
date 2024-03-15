@@ -1,4 +1,4 @@
-package com.thangavel.cleancodearch.ui.theme
+package com.thangavel.cleancodearch.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

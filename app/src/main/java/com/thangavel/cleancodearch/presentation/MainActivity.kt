@@ -1,4 +1,4 @@
-package com.thangavel.cleancodearch
+package com.thangavel.cleancodearch.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,8 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.thangavel.cleancodearch.ui.theme.CleanCodeArchTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.thangavel.cleancodearch.presentation.coin_list.CoinLIstScreen
+import com.thangavel.cleancodearch.presentation.ui.theme.CleanCodeArchTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +28,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.CoinListScreen.route
+                    ) {
+                        composable(route = Screen.CoinListScreen.route) {
+                            CoinLIstScreen(navController = navController)
+                        }
+                    }
                 }
             }
         }
@@ -37,7 +51,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = `true)
+@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     CleanCodeArchTheme {

@@ -1,4 +1,4 @@
-package com.thangavel.cleancodearch.ui.theme
+package com.thangavel.cleancodearch.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
